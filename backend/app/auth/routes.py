@@ -38,5 +38,6 @@ def login_user(email: str, password: str):
         "id": str(user["_id"]),
         "name": user["name"],
         "email": user["email"],
-        "role": user["role"]
+        "user_type": user["user_type"]
+
     }

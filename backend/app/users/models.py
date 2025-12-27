@@ -7,12 +7,12 @@ class UserCreate(BaseModel):
     name: str = Field(..., min_length=2)
     email: EmailStr
     password: str = Field(..., min_length=6)
-    role: Literal["buyer", "seller"]
+    user_type: Literal["individual", "dealer"]
 
 
 class UserInDB(BaseModel):
     id: str
     name: str
     email: EmailStr
-    role: str
+    user_type: str
     created_at: datetime

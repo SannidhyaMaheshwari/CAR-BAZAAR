@@ -1,0 +1,174 @@
+25/12/25
+
+PROJECT NAME: CAR-BAZAAR
+CURRENT STAGE: Backend foundation + basic frontend + authentication (no JWT yet)
+
+==================================================
+1. OVERALL SUMMARY (WHAT WE HAVE DONE)
+==================================================
+
+- Set up a modular monolithic architecture
+- Backend built using FastAPI
+- MongoDB Atlas connected successfully
+- Secure password hashing implemented using Argon2
+- Role-based user model (buyer / seller)
+- Authentication APIs implemented:
+  - Register
+  - Login
+- APIs tested using Postman
+- Frontend initialized using React
+- Basic Home page with Navbar created
+- Git repository properly initialized and pushed
+
+==================================================
+2. BACKEND STRUCTURE
+==================================================
+
+backend/
+└── app/
+    ├── main.py
+    │
+    ├── core/
+    │   ├── database.py
+    │   └── security.py
+    │
+    ├── users/
+    │   └── models.py
+    │
+    ├── auth/
+    │   ├── routes.py
+    │   └── services.py
+    │
+    └── __init__.py
+
+==================================================
+3. BACKEND FILE-BY-FILE EXPLANATION
+==================================================
+
+main.py
+- Entry point of FastAPI application
+- Registers all routers
+- Starts CAR-BAZAAR backend server
+
+core/database.py
+- Creates MongoDB client using connection string
+- Exposes database object for reuse across app
+
+core/security.py
+- Handles password hashing and verification
+- Uses Argon2 for secure password storage
+
+users/models.py
+- Defines Pydantic schemas for users
+- Validates input data during registration
+- Ensures passwords are never returned in responses
+
+auth/routes.py
+- Defines authentication API endpoints
+- Handles HTTP requests for register and login
+- Calls service layer for business logic
+
+auth/services.py
+- Contains core authentication logic
+- Hashes passwords
+- Verifies login credentials
+- Interacts directly with MongoDB collections
+
+==================================================
+4. FRONTEND STRUCTURE
+==================================================
+
+frontend/
+└── src/
+    ├── components/
+    │   └── Navbar.js
+    │
+    ├── pages/
+    │   └── Home.js
+    │
+    ├── App.js
+    └── index.js
+
+==================================================
+5. FRONTEND FILE-BY-FILE EXPLANATION
+==================================================
+
+index.js
+- React entry point
+- Mounts the React app to the DOM
+
+App.js
+- Root component of frontend
+- Combines Navbar and page components
+
+components/Navbar.js
+- Reusable navigation bar component
+- Displays CAR-BAZAAR branding and links
+
+pages/Home.js
+- Landing page of the application
+- Explains buyer and seller use cases
+
+==================================================
+6. AUTHENTICATION FLOW (CURRENT)
+==================================================
+
+1. User registers with:
+   - name
+   - email
+   - password
+   - role (buyer / seller)
+
+2. Password is hashed using Argon2
+
+3. User data stored in MongoDB (users collection)
+
+4. User logs in using email and password
+
+5. Credentials are verified securely
+
+6. User details and role are returned
+
+==================================================
+7. WHAT IS NOT DONE YET
+==================================================
+
+- JWT-based authentication
+- Protected routes
+- Role-based authorization enforcement
+- Frontend login UI
+- Frontend-backend integration
+- Car listing module
+- Seller dashboard
+- Buyer search and filters
+
+==================================================
+8. CURRENT TECH STACK
+==================================================
+
+Backend:
+- FastAPI
+- MongoDB Atlas
+- PyMongo
+- Passlib (Argon2)
+
+Frontend:
+- React
+- JavaScript (no framework yet)
+
+Tools:
+- Postman (API testing)
+- Git & GitHub (version control)
+
+==================================================
+9. ONE-LINE PROJECT DESCRIPTION
+==================================================
+
+CAR-BAZAAR is a modular monolithic web application built using FastAPI, MongoDB, and React, providing a role-based platform for local used-car buyers and sellers.
+
+==================================================
+END OF SUMMARY
+==================================================
+
+
+
